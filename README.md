@@ -70,5 +70,5 @@ Now you can use the variables from your config file as explained here <https://s
 ```yaml
 provider:
   name: aws
-  stage: stage-${file(~/.serverless/serverless.conf.yml):nvironment.stage.build}
+  stage: stage-${file(~/.serverless/serverless.conf.yml):environment.stage.build}
 ```
