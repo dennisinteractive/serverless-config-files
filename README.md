@@ -13,7 +13,7 @@ A Serverless plugin to create config files to be used as variables in serverless
 
 - [Getting Started](#getting-started)
 - [Commands](#commands)
-- [Using in serverless.yml](#serverlessyml)
+- [Using in serverless.yml](#reference-variables)
 
 # Getting Started
 
@@ -64,7 +64,7 @@ global:
     surname: bar
 ```
 
-# Serverless.yml
+# Reference Variables
 Now you can use the variables from your config file as explained here <https://serverless.com/framework/docs/providers/aws/guide/variables#reference-variables-in-other-files>
 
 ```yaml
