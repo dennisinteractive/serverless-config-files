@@ -13,7 +13,7 @@ A Serverless plugin to create config files to be used as variables in serverless
 
 - [Getting Started](#getting-started)
 - [Commands](#commands)
-- [Using in serverless.yml](#Serverless.yml)
+- [Using in serverless.yml](#serverlessyml)
 
 # Getting Started
 
