@@ -1,8 +1,8 @@
 'use strict';
 
 const path = require('path')
+const dot = require('dot-object')
 const yaml = require('./yaml')
-const helper = require('./helper')
 
 class ServerlessConfigFilesPlugin {
   constructor(serverless, options) {
@@ -34,16 +34,15 @@ class ServerlessConfigFilesPlugin {
       yaml.read(filePath).catch(error => error.code === 'ENOENT' ? {} : Promise.reject(error)),
       Promise.resolve()
     ]).then(data => {
-      let newObj = helper.strToObj(this.options.set);
-
       if (typeof data[0] == 'string')
-        data = data[0];
+        data = JSON.parse(data[0]);
       else
-        data = JSON.stringify({});
+        data = {};
 
-      let doc = helper.mergeRecursive([JSON.parse(data), JSON.parse(newObj)]);
+      let kv = this.options.set.split('=');
+      dot.str(kv[0], kv[1], data);
 
-      return yaml.write(filePath, doc)
+      return yaml.write(filePath, data)
     })
   }
 
