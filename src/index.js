@@ -15,7 +15,7 @@ class ServerlessConfigFilesPlugin {
         lifecycleEvents: ['set'],
         options: {
           set: {
-            usage: 'Usage: config-file --set user:foo. If you want to use structured config, run config-file --set global.user.name:foo',
+            usage: 'Usage: config-file --set user=foo. If you want to use structured config, run config-file --set global.user.name=foo',
             required: true,
           }
         },
