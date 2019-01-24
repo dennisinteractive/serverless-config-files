@@ -13,6 +13,7 @@ A Serverless plugin to create config files to be used as variables in serverless
 
 - [Getting Started](#getting-started)
 - [Commands](#commands)
+- [Using in serverless.yml](#Serverless.yml)
 
 # Getting Started
 
@@ -39,26 +40,35 @@ custom:
 # Commands
 
 You can add simple key/value pairs i.e.
-```
+```bash
 sls config-file --set foo:bar
 ```
 
 Output
-```
+```yaml
 foo:bar
 ```
 
 For structured data you can pass it like this:
-```
+```bash
 sls config-file --set global.user.name:foo
 sls config-file --set global.user.surname:bar
+sls config-file --set environment.stage.build:33
 ```
 
 Output
-```
+```yaml
 global:
   user:
     name: foo
     surname: bar
 ```
 
+# Serverless.yml
+Now you can use the variables from your config file as explained here <https://serverless.com/framework/docs/providers/aws/guide/variables#reference-variables-in-other-files>
+
+```yaml
+provider:
+  name: aws
+  stage: stage-${file(~/.serverless/serverless.conf.yml):nvironment.stage.build}
+```
