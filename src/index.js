@@ -24,6 +24,7 @@ class ServerlessConfigFilesPlugin {
 
     this.hooks = {
       'config-file:set': this.configSet.bind(this),
+      'after:config-file:set': this.afterConfigSet.bind(this),
     };
   }
 
@@ -46,6 +47,10 @@ class ServerlessConfigFilesPlugin {
     })
   }
 
+  afterConfigSet() {
+    this.serverless.cli.log(`Generated ${this.getConfigFile()}`);
+  }
+
   getConfigFile () {
     if (this.serverless.service.custom.configFile) {
       let filepath = this.serverless.service.custom.configFile
@@ -60,3 +65,4 @@ class ServerlessConfigFilesPlugin {
 }
 
 module.exports = ServerlessConfigFilesPlugin
+
